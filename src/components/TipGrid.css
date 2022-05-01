@@ -1,0 +1,10 @@
+.tipGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    width: 108%;
+    height: 85px;
+    margin-right: 0;
+    padding-right: 0;
+  }

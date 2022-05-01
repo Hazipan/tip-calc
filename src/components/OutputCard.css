@@ -1,0 +1,36 @@
+.outputCard {
+    background-color: hsl(183, 100%, 15%);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    padding: 20px;
+    width: 45%;
+  }
+  
+  .results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  p{
+    color: white;
+    font-size: 14px;
+  }
+  
+  .perPerson {
+    color: hsl(184, 14%, 56%);
+    font-size: 12px;
+  }
+  
+  .col {
+    align-self: center;
+  }
+  
+  .amount {
+    color: hsl(172, 67%, 45%);
+    font-size: 32px;
+    text-align: right;
+    align-self: center;
+  }

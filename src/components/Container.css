@@ -1,0 +1,12 @@
+.container{
+    width: 600px;
+    height: 250px;
+    background-color: white;
+    border-radius: 15px;
+    margin-top: 50px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0px 0px 10px 10px hsl(183, 100%, 15%, 0.05);
+  }
