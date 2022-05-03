@@ -1,8 +1,8 @@
 import './CustomTip.css';
 
-const CustomTip = () => {
+const CustomTip = (props) => {
     return(
-        <input type='number' id='customTip' min='1' placeholder='Custom'></input>
+        <input type='number' id='customTip' min='1' placeholder='Custom' onChange={props.onChange}></input>
     )
 }
 

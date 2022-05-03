@@ -28,19 +28,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bill: 1,
-      tip: 1,
+      bill: 0,
+      tip: 0,
       people: 1,
-      arr: [...buttonArr]
+      arr: [...buttonArr],
+      total: this.bill + this.tip
     };
     this.tipClick = this.tipClick.bind(this);
     this.billChange = this.billChange.bind(this);
     this.peopleChange = this.peopleChange.bind(this);
+    this.tipChange = this.tipChange.bind(this);
   }
 
   tipClick(index) {
     let temp = this.state.arr;
-    for(let i = 0; i < temp.length; i++){
+    for (let i = 0; i < temp.length; i++) {
       this.state.arr[i].active = false;
     }
     temp[index].active = true;
@@ -51,26 +53,59 @@ class App extends React.Component {
   }
 
   billChange(event) {
-    this.setState({
-      bill: event.target.value
-    })
+    if (event.target.value >= 1) {
+      this.setState({
+        bill: event.target.value
+      })
+    } else {
+      this.setState({
+        bill: 0
+      })
+    }
   }
 
   peopleChange(event) {
+    if (event.target.value >= 1) {
+      this.setState({
+        people: event.target.value
+      })
+    } else {
+      this.setState({
+        people: 0
+      })
+    }
+  }
+
+  tipChange(event) {
+    if (event.target.value >= 1) {
+      this.setState({
+        tip: event.target.value / 100
+      })
+    } else {
+      this.setState({
+        tip: 0
+      })
+    }
+    let temp = this.state.arr;
+    for (let i = 0; i < temp.length; i++) {
+      this.state.arr[i].active = false;
+    }
     this.setState({
-      people: event.target.value
+      arr: temp
     })
   }
 
   render() {
-    const tipPerPerson = (parseFloat(this.state.total) * parseFloat(this.state.tip) / parseFloat(this.state.people));
+    const totalTip = parseFloat(this.state.tip) * parseFloat(this.state.bill);
+    const totalPerPerson = ((totalTip + parseFloat(this.state.bill)) / parseFloat(this.state.people));
+    const totalTipPerPerson = totalTip / parseFloat(this.state.people);
     return (
       <div className="app">
         <img id="logo" src={logo} alt="Splitter Logo" />
         <Container>
           <InputCard>
             <img src={person} id='person-icon' alt='' />
-            <InputBill onChange={this.billChange}/>
+            <InputBill onChange={this.billChange} />
             <TipGrid>
               {
                 this.state.arr.map((elem, index) => {
@@ -85,14 +120,14 @@ class App extends React.Component {
                   );
                 })
               }
-              <CustomTip />
+              <CustomTip onChange={this.tipChange}/>
             </TipGrid>
             <img src={dollar} id='dollar-icon' alt='' />
-            <InputPeople onChange={this.peopleChange}/>
+            <InputPeople onChange={this.peopleChange} />
           </InputCard>
           <OutputCard>
-            <OutputTip value={tipPerPerson} />
-            <OutputTotal value={((this.state.total * this.state.tip) + this.state.total) / this.state.people}/>
+            <OutputTip value={totalTipPerPerson} />
+            <OutputTotal value={totalPerPerson} />
             <ResetButton />
           </OutputCard>
         </Container>
