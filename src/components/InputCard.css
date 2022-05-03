@@ -39,6 +39,10 @@
     color: hsl(183, 100%, 15%);
     padding-right: 15px;
   }
+
+  input:hover {
+    border: 2px solid hsl(172, 67%, 45%);
+  }
   
   input:focus {
     outline: none !important;

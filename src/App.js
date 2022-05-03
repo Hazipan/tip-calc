@@ -15,62 +15,84 @@ import ResetButton from './components/ResetButton';
 import './App.css';
 import React from 'react';
 
-const tipValues = [
-  ['5%', '10%', '15%'],
-  ['25%', '50%']
-];
+const buttonArr = [
+  { label: '5%', active: false, value: 0.05 },
+  { label: '10%', active: false, value: 0.10 },
+  { label: '15%', active: false, value: 0.15 },
+  { label: '25%', active: false, value: 0.25 },
+  { label: '50%', active: false, value: 0.50 }
+]
 
+// styles for default and selected tip buttons
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bill: 0,
-      tip: 0,
-      people: 0,
-      tipTotal: 0,
-      total: 0,
+      bill: 1,
+      tip: 1,
+      people: 1,
+      arr: [...buttonArr]
+    };
+    this.tipClick = this.tipClick.bind(this);
+    this.billChange = this.billChange.bind(this);
+    this.peopleChange = this.peopleChange.bind(this);
+  }
+
+  tipClick(index) {
+    let temp = this.state.arr;
+    for(let i = 0; i < temp.length; i++){
+      this.state.arr[i].active = false;
     }
+    temp[index].active = true;
+    this.setState({
+      arr: temp,
+      tip: temp[index].value
+    })
+  }
+
+  billChange(event) {
+    this.setState({
+      bill: event.target.value
+    })
+  }
+
+  peopleChange(event) {
+    this.setState({
+      people: event.target.value
+    })
   }
 
   render() {
-    let val = 0;
+    const tipPerPerson = (parseFloat(this.state.total) * parseFloat(this.state.tip) / parseFloat(this.state.people));
     return (
-      <div class="app">
+      <div className="app">
         <img id="logo" src={logo} alt="Splitter Logo" />
         <Container>
           <InputCard>
-            <img src={person} id='person-icon' />
-            <InputBill />
+            <img src={person} id='person-icon' alt='' />
+            <InputBill onChange={this.billChange}/>
             <TipGrid>
               {
-                tipValues.flat().map((btn, i) => {
+                this.state.arr.map((elem, index) => {
                   return (
                     <TipButton
-                      key={i}
-                      label={btn}
-                      value={
-                        btn === '5%'
-                          ? .05
-                          : btn === '10%'
-                            ? .10
-                            : btn === '15%'
-                              ? .15
-                              : btn === '25%'
-                                ? .25
-                                : .50
-                      }
+                      key={index}
+                      label={elem.label}
+                      value={elem.value}
+                      onClick={() => this.tipClick(index)}
+                      isActive={elem.active}
                     />
                   );
                 })
               }
               <CustomTip />
             </TipGrid>
-            <img src={dollar} id='dollar-icon' />
-            <InputPeople />
+            <img src={dollar} id='dollar-icon' alt='' />
+            <InputPeople onChange={this.peopleChange}/>
           </InputCard>
           <OutputCard>
-            <OutputTip />
-            <OutputTotal />
+            <OutputTip value={tipPerPerson} />
+            <OutputTotal value={((this.state.total * this.state.tip) + this.state.total) / this.state.people}/>
             <ResetButton />
           </OutputCard>
         </Container>

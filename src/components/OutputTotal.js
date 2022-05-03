@@ -1,11 +1,11 @@
-const OutputTotal = () => {
+const OutputTotal = (props) => {
     return (
         <div className='results'>
             <div className="col">
                 <p>Total</p>
                 <p className='perPerson'>/ person</p>
             </div>
-            <p className='amount'>$0.00</p>
+            <p className='amount'>{props.value}</p>
         </div>
     )
 }

@@ -1,9 +1,11 @@
 import "./TipButton.css";
 
-const TipButton = ({value, label}) => {
+const TipButton = (props) => {
+    let btn = 'btn'
+    let active = 'btn active';
     return (
-        <button className='btn' value={value}>
-            {label}
+        <button className={props.isActive ? active : btn} value={props.value} onClick={props.onClick}>
+            {props.label}
         </button>
     )
 };
