@@ -23,8 +23,8 @@ const buttonArr = [
   { label: '50%', active: false, value: 0.50 }
 ]
 
-const visible = { visibility: 'visible'};
-const hidden = { visibility: 'hidden'};
+const visible = { visibility: 'visible' };
+const hidden = { visibility: 'hidden' };
 
 let billWarningStyle = hidden;
 let peopleWarningStyle = hidden;
@@ -136,40 +136,42 @@ class App extends React.Component {
 
     return (
       <div className="app">
-        <img id="logo" src={logo} alt="Splitter Logo" />
-        <Container>
-          <InputCard>
-            <img src={person} id='person-icon' alt='' />
-            <InputBill onChange={this.billChange} style={billWarningStyle} />
-            <TipGrid>
-              {
-                this.state.arr.map((elem, index) => {
-                  return (
-                    <TipButton
-                      key={index}
-                      label={elem.label}
-                      value={elem.value}
-                      onClick={() => this.tipClick(index)}
-                      isActive={elem.active}
-                    />
-                  );
-                })
-              }
-              <CustomTip onChange={this.tipChange} />
-            </TipGrid>
-            <img src={dollar} id='dollar-icon' alt='' />
-            <InputPeople onChange={this.peopleChange} style={peopleWarningStyle} />
-          </InputCard>
-          <OutputCard>
-            <OutputTip value={`$${(Math.round(totalTipPerPerson * 100) / 100).toFixed(2)}`} />
-            <OutputTotal value={`$${(Math.round(totalPerPerson * 100) / 100).toFixed(2)}`} />
-            <ResetButton onClick={this.reset} disabled={this.state.disabled} />
-          </OutputCard>
-        </Container>
-        <div className="attribution">
+        <main>
+          <img id="logo" src={logo} alt="Splitter Logo" />
+          <Container>
+            <InputCard>
+              <img src={person} id='person-icon' alt='' />
+              <InputBill onChange={this.billChange} style={billWarningStyle} />
+              <TipGrid>
+                {
+                  this.state.arr.map((elem, index) => {
+                    return (
+                      <TipButton
+                        key={index}
+                        label={elem.label}
+                        value={elem.value}
+                        onClick={() => this.tipClick(index)}
+                        isActive={elem.active}
+                      />
+                    );
+                  })
+                }
+                <CustomTip onChange={this.tipChange} />
+              </TipGrid>
+              <img src={dollar} id='dollar-icon' alt='' />
+              <InputPeople onChange={this.peopleChange} style={peopleWarningStyle} />
+            </InputCard>
+            <OutputCard>
+              <OutputTip value={`$${(Math.round(totalTipPerPerson * 100) / 100).toFixed(2)}`} />
+              <OutputTotal value={`$${(Math.round(totalPerPerson * 100) / 100).toFixed(2)}`} />
+              <ResetButton onClick={this.reset} disabled={this.state.disabled} />
+            </OutputCard>
+          </Container>
+        </main>
+        <footer className="attribution">
           Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
           Coded by <a href="https://github.com/Hazipan" target="_blank">Aaron Rutherford</a>.
-        </div>
+        </footer>
       </div>
     )
   }
