@@ -1,8 +1,8 @@
 import './ResetButton.css';
 
-const ResetButton = () => {
+const ResetButton = (props) => {
     return(
-        <button className='resetButton'>Reset</button>
+        <button className='resetButton' onClick={props.onClick} disabled={props.disabled}>Reset</button>
     )
 }
 

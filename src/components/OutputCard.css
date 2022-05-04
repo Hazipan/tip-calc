@@ -34,3 +34,9 @@
     text-align: right;
     align-self: center;
   }
+
+  @media(max-width: 600px) {
+    .outputCard {
+      width: 100%
+    }
+  }

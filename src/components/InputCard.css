@@ -7,9 +7,21 @@
     position: relative;
   }
 
+  .labelGrid {
+    display: flex;
+    width: 109%;
+    justify-content: space-between;
+  }
+
   .label{
     font-size: 12px;
     color: hsl(186, 14%, 43%);
+  }
+  
+  .warning {
+    text-align: right;
+    color: red;
+    font-size: 12px;
   }
   
   #person-icon {
@@ -51,4 +63,12 @@
   
   input:out-of-range {
     border: 2px solid red;
+  }
+
+  @media(max-width: 600px) {
+    .inputCard {
+      width: 100%;
+      margin-right: 25px;
+      padding: 0;
+    }
   }

@@ -4,7 +4,19 @@
   align-items: center;
   height: 100vh;
   flex-direction: column;
+  background-color: hsl(185, 41%, 84%);
+}
+
+.attribution {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 .attribution { font-size: 11px; text-align: center; margin-top: 20px; }
 .attribution a { color: hsl(228, 45%, 44%); }
+
+@media(max-width: 600px){
+  .app {
+    height: 750px;
+  }
+}
