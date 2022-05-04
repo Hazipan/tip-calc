@@ -1,13 +1,4 @@
-.app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  flex-direction: column;
-  background-color: hsl(185, 41%, 84%);
-}
-
-.calc {
+.app .calc {
   display: flex;
   justify-content: center;
   align-items: center;
