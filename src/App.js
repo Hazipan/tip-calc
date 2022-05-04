@@ -29,7 +29,6 @@ const hidden = { visibility: 'hidden' };
 let billWarningStyle = hidden;
 let peopleWarningStyle = hidden;
 
-// styles for default and selected tip buttons
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -136,7 +135,7 @@ class App extends React.Component {
 
     return (
       <div className="app">
-        <main>
+        <main className='calc'>
           <img id="logo" src={logo} alt="Splitter Logo" />
           <Container>
             <InputCard>

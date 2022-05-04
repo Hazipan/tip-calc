@@ -7,12 +7,22 @@
   background-color: hsl(185, 41%, 84%);
 }
 
-.attribution {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.calc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-color: hsl(185, 41%, 84%);
 }
 
-.attribution { font-size: 11px; text-align: center; margin-top: 20px; }
+.attribution { 
+  font-size: 11px; 
+  text-align: center; 
+  margin-top: 20px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; 
+}
+
 .attribution a { color: hsl(228, 45%, 44%); }
 
 @media(max-width: 600px){
