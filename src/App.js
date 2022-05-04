@@ -134,8 +134,8 @@ class App extends React.Component {
     const totalTipPerPerson = totalTip / parseFloat(this.state.people);
 
     return (
-      <div className="app">
-        <main className='calc'>
+      <div className='app'>
+        <main className='main'>
           <img id="logo" src={logo} alt="Splitter Logo" />
           <Container>
             <InputCard>

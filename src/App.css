@@ -1,17 +1,27 @@
-.app .calc {
+.app {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   flex-direction: column;
   background-color: hsl(185, 41%, 84%);
+  position: relative;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
 }
 
 .attribution { 
   font-size: 11px; 
   text-align: center; 
-  margin-top: 20px;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace; 
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  position: absolute;
+  bottom: 130px; 
 }
 
 .attribution a { color: hsl(228, 45%, 44%); }
@@ -20,5 +30,5 @@
   .app {
     height: 750px;
   }
-  .attribution { font-size: 8px;}
+  .attribution { font-size: 8px; margin-top: 65px; bottom: 30px;}
 }
