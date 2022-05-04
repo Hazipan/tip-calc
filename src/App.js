@@ -168,7 +168,7 @@ class App extends React.Component {
         </Container>
         <div className="attribution">
           Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-          Coded by <a href="#" target="_blank">Aaron Rutherford</a>.
+          Coded by <a href="https://github.com/Hazipan" target="_blank">Aaron Rutherford</a>.
         </div>
       </div>
     )

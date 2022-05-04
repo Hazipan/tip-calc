@@ -14,9 +14,10 @@
     .container {
       flex-direction: column;
       padding: 20px 40px 20px 40px;
-      width: 300px;
+      width: 290px;
       justify-content: center;
       box-shadow: none;
       margin-top: none;
+      border-radius: 35px;
     }
   }
