@@ -168,8 +168,11 @@ class App extends React.Component {
           </Container>
         </main>
         <footer className="attribution">
-          Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-          Coded by <a href="https://github.com/Hazipan" target="_blank">Aaron Rutherford</a>.
+          <p>
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+            Coded by <a href="https://github.com/Hazipan" target="_blank">Aaron Rutherford</a>.
+          </p>
+            <a href='https://github.com/Hazipan/tip-calc'>See the code!</a>
         </footer>
       </div>
     )

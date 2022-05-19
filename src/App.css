@@ -17,18 +17,26 @@
 }
 
 .attribution { 
-  font-size: 11px; 
+  font-size: 14px; 
   text-align: center; 
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   position: absolute;
-  bottom: 130px; 
+  bottom: 110px;
 }
 
-.attribution a { color: hsl(228, 45%, 44%); }
+.attribution a { 
+  color: hsl(228, 45%, 44%);
+  font-size: 14px;
+ }
 
 @media(max-width: 600px){
   .app {
     height: 750px;
   }
-  .attribution { font-size: 8px; margin-top: 65px; bottom: 30px;}
+  .attribution { 
+    font-size: 8px; margin-top: 65px; bottom: 30px;
+  }
+  .attribution a {
+    font-size: 8px;
+  }
 }
