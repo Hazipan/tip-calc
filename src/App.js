@@ -1,18 +1,19 @@
 import logo from './images/logo.svg';
 import person from './images/icon-person.svg';
 import dollar from './images/icon-dollar.svg';
-import Container from './components/Container';
-import InputCard from './components/InputCard';
+
 import InputBill from './components/InputBill';
-import TipGrid from './components/TipGrid';
 import TipButton from './components/TipButton';
-import CustomTip from './components/CustomTip';
 import InputPeople from './components/InputPeople';
-import OutputCard from './components/OutputCard';
 import OutputTip from './components/OutputTip';
 import OutputTotal from './components/OutputTotal';
 import ResetButton from './components/ResetButton';
-import './App.css';
+
+import './css/App.css';
+import './css/InputCard.css';
+import './css/OutputCard.css';
+import './css/TipGrid.css';
+
 import React from 'react';
 
 const buttonArr = [
@@ -47,9 +48,9 @@ class App extends React.Component {
   }
 
   tipClick(index) {
-    let temp = this.state.arr;
+    let temp = [...this.state.arr];
     for (let i = 0; i < temp.length; i++) {
-      this.state.arr[i].active = false;
+      temp[i].active = false;
     }
     temp[index].active = true;
     this.setState({
@@ -101,9 +102,9 @@ class App extends React.Component {
         tip: 0,
       });
     }
-    let temp = this.state.arr;
+    let temp = [...this.state.arr];
     for (let i = 0; i < temp.length; i++) {
-      this.state.arr[i].active = false;
+      temp[i].active = false;
     }
     this.setState({
       arr: temp,
@@ -112,9 +113,9 @@ class App extends React.Component {
   }
 
   reset() {
-    let temp = this.state.arr;
+    let temp = [...this.state.arr];
     for (let i = 0; i < temp.length; i++) {
-      this.state.arr[i].active = false;
+      temp[i].active = false;
     }
     this.setState({
       bill: 0,
@@ -137,42 +138,45 @@ class App extends React.Component {
       <div className='app'>
         <main className='main'>
           <img id="logo" src={logo} alt="Splitter Logo" />
-          <Container>
-            <InputCard>
+          <div className='container'>
+            <div className='inputCard'>
               <img src={person} id='person-icon' alt='' />
               <InputBill onChange={this.billChange} style={billWarningStyle} />
-              <TipGrid>
-                {
-                  this.state.arr.map((elem, index) => {
-                    return (
-                      <TipButton
-                        key={index}
-                        label={elem.label}
-                        value={elem.value}
-                        onClick={() => this.tipClick(index)}
-                        isActive={elem.active}
-                      />
-                    );
-                  })
-                }
-                <CustomTip onChange={this.tipChange} />
-              </TipGrid>
+              <div>
+                <p className='label'>Select Tip %</p>
+                <div className='tipGrid'>
+                  {
+                    this.state.arr.map((elem, index) => {
+                      return (
+                        <TipButton
+                          key={index}
+                          label={elem.label}
+                          value={elem.value}
+                          onClick={() => this.tipClick(index)}
+                          isActive={elem.active}
+                        />
+                      );
+                    })
+                  }
+                  <input type='number' className='customTip' min='0' placeholder='Custom' onChange={this.tipChange} />
+                </div>
+              </div>
               <img src={dollar} id='dollar-icon' alt='' />
               <InputPeople onChange={this.peopleChange} style={peopleWarningStyle} />
-            </InputCard>
-            <OutputCard>
+            </div>
+            <div className='outputCard'>
               <OutputTip value={`$${(Math.round(totalTipPerPerson * 100) / 100).toFixed(2)}`} />
               <OutputTotal value={`$${(Math.round(totalPerPerson * 100) / 100).toFixed(2)}`} />
               <ResetButton onClick={this.reset} disabled={this.state.disabled} />
-            </OutputCard>
-          </Container>
+            </div>
+          </div>
         </main>
         <footer className="attribution">
           <p>
-            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-            Coded by <a href="https://github.com/Hazipan" target="_blank">Aaron Rutherford</a>.
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" rel='noreferrer' target="_blank">Frontend Mentor</a>.
+            Coded by <a href="https://github.com/Hazipan" rel='noreferrer' target="_blank">Aaron Rutherford</a>.
           </p>
-            <a href='https://github.com/Hazipan/tip-calc'>See the code!</a>
+          <a href='https://github.com/Hazipan/tip-calc'>See the code!</a>
         </footer>
       </div>
     )
